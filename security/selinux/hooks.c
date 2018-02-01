@@ -4758,6 +4758,8 @@ static int sock_has_perm(struct task_struct *task, struct sock *sk, u32 perms)
 		return -EINVAL;
 	}
 
+	if (!sksec)
+		return -EFAULT;
 	if (sksec->sid == SECINITSID_KERNEL)
 		return 0;
 
